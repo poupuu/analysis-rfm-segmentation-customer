@@ -35,3 +35,4 @@ A "one-size-fits-all" marketing strategy is inefficient and costly. This project
 2.  **Try Advanced Models:** Experiment with other clustering algorithms like **DBSCAN** or **Gaussian Mixture Models (GMM)** to see if they find more robust or different segment structures.
 3.  **Richer Feature Engineering:** Incorporate more features beyond just RFM to create even richer customer personas, such as **product categories purchased**, **review scores**, or **payment types used**.
 ```eof
+ 
