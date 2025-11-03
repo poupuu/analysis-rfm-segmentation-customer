@@ -4,7 +4,6 @@
 This project develops an unsupervised machine learning model (K-Means Clustering) to segment e-commerce customers based on their purchasing behavior (Recency, Frequency, Monetary). It then deploys this trained model into an interactive Streamlit application that can predict the customer segment for any new user-inputted RFM values.
 
 ## Problem
-A "one-size-fits-all" marketing strategy is inefficient and costly. This project addresses two primary problems:
 1.  **Inefficient Marketing Spend:** Treating all customers identically, (e.g., offering large discounts to "Champions" who would have purchased anyway).
 2.  **Customer Churn & Lost Revenue:** Failing to identify and re-engage high-value "At Risk" or "Can’t Lose Them" customers before they are lost forever.
 
@@ -20,15 +19,15 @@ A "one-size-fits-all" marketing strategy is inefficient and costly. This project
 
 ## Skills
 1.  **Python:** Pandas, Numpy, Matplotlib/Seaborn
-2.  **Data Preprocessing:** `pd.merge`, `groupby`, `.agg()`, `pd.to_datetime`
-3.  **ML Preprocessing:** `StandardScaler` (Scaling), `np.log1p` (Log Transformation)
-4.  **Modeling:** `KMeans` (Unsupervised Learning, Clustering) from `scikit-learn`
-5.  **Deployment / Web App:** `Streamlit` (including `@st.cache_data` for performance)
+2.  **Data Preprocessing:** Merge, groupby, aggregate, datetime
+3.  **ML Preprocessing:** Scaling, Log Transformation
+4.  **Modeling:** Kmeans
+5.  **Deployment / Web App:** Streamlit
 
 ## Results
-1.  **Model:** A trained K-Means model that successfully identifies 9-11 distinct, actionable customer segments (e.g., 'K-Champions', 'K-Can’t Lose Them', 'K-New/Promising') based on their natural data patterns.
-2.  **Key Insight:** The K-Means model proved that the traditional Rule-Based (Quantile) method was highly misleading for this dataset. The rule-based method incorrectly labeled thousands of 'one-time-purchase' customers as 'Champions', while K-Means correctly identified the *true* Champions segment as a much smaller, elite group.
-3.  **Tool:** A fully functional and interactive Streamlit web application (`rfm_predictor_app.py`) that serves as a "Segment Predictor" tool, allowing any user to input R, F, & M values and get an instant segment prediction.
+1. The Rule-Based Method was Misleading. The simple "Rule-Based" method failed because 90% of customers only purchased once (Frequency=1). The model couldn't tell these identical customers apart and wrongly labeled thousands of them as "Champions," creating a segment of over 15,000.
+2. K-Means Found the True Champions: The K-Means (Machine Learning) model analyzed the natural behavior and correctly identified the true "Champions" (customers who buy very frequently) as a tiny, elite group of only about 500 people.
+3. A More Realistic Business View: The K-Means model shows a more realistic business picture: the largest segment by far is "K-Lost Customers" (around 20,000 people), a fact that was completely hidden by the flawed rule-based method.
 
 ## Next Steps
 1.  **Separate Training/Inference:** Package the `scaler` and `kmeans` model as `.pkl` files (pickling) to create a formal MLOps pipeline, separating the one-time training process from the lightweight prediction app.
